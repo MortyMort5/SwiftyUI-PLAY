@@ -128,7 +128,7 @@ struct CardView: View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text("UI Swift")
+                    Text("#1 Sponsor")
                         .font(.title)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -136,15 +136,15 @@ struct CardView: View {
                         .foregroundColor(Color("accent"))
                 }
                 Spacer()
-                Image("Logo1")
+                Image("icon")
             }
             .padding(.horizontal, 20)
             .padding(.top, 20)
             Spacer()
-            Image("Card1")
+            Image("zero")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 300, height: 110, alignment: .top)
+                .frame(width: 300, height: 150, alignment: .top)
         }
     }
 }
@@ -161,13 +161,15 @@ struct TitleView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Certificates")
+                Text("BRANDS")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 Spacer()
             }
             .padding()
-            Image("Background1")
+            Image("backDrop")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             Spacer()
         }
     }
@@ -182,7 +184,7 @@ struct BottomCardView: View {
                 .frame(width: 40, height: 5)
                 .cornerRadius(3)
                 .opacity(0.1)
-            Text("This certificate is proof that Morty has achieved the UI Design course with approval from a Design+Code instructor.")
+            Text("MORTYZ sponsors to make all this happen.")
                 .multilineTextAlignment(.center)
                 .font(.subheadline)
                 .lineSpacing(4)
@@ -192,8 +194,8 @@ struct BottomCardView: View {
                     .animation(Animation.easeInOut.delay(0.3))
                 
                 VStack(alignment: .leading, spacing: 8.0) {
-                    Text("SwiftUI").fontWeight(.bold)
-                    Text("12 of 12 sections completed\n10 hours spent so far")
+                    Text("Skate").fontWeight(.bold)
+                    Text("5 of 50 tricks completed \n10 hours spent so far")
                         .font(.footnote)
                         .foregroundColor(.gray)
                         .lineSpacing(4)

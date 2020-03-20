@@ -148,8 +148,11 @@ struct WatchRingsView: View {
             HStack(spacing: 12.0) {
                 RingView(color1: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), color2: #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1), width: 44, height: 44, percent: 68, show: .constant(true))
                 VStack(alignment: .leading, spacing: 4.0) {
-                    Text("6 minutes left").bold().modifier(FontModifier(style: .subheadline))
-                    Text("Watched 10 mins today").modifier(FontModifier(style: .caption))
+                    Text("6 minutes left")
+                        .bold()
+                        .modifier(FontModifier(style: .subheadline))
+                    Text("Watched 10 mins today")
+                        .modifier(FontModifier(style: .caption))
                 }
                 .modifier(FontModifier())
             }
