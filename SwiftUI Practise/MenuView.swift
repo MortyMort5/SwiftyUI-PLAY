@@ -14,7 +14,7 @@ struct MenuView: View {
             Spacer()
             
             VStack(spacing: 16) {
-                Text("Meng - 28% complete")
+                Text("MORTYZ")
                     .font(.caption)
                 
                 Color.white
@@ -40,7 +40,7 @@ struct MenuView: View {
             .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
             .padding(.horizontal, 30)
             .overlay(
-                Image("Avatar")
+                Image("selfy")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 60, height: 60)
