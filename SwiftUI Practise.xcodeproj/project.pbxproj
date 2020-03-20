@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,6 +46,14 @@
 		C8F324B5242426FA004494FD /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = C8F3249F242426FA004494FD /* OFL.txt */; };
 		C8F324B6242426FA004494FD /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = C8F324A0242426FA004494FD /* README.txt */; };
 		C8F324B824243412004494FD /* CourseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F324B724243412004494FD /* CourseList.swift */; };
+		C8F324E924256013004494FD /* CourseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F324E824256013004494FD /* CourseDetail.swift */; };
+		C8F324EB242567D9004494FD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F324EA242567D9004494FD /* Data.swift */; };
+		C8F324ED242569CC004494FD /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F324EC242569CC004494FD /* PostList.swift */; };
+		C8F324EF24256D77004494FD /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F324EE24256D77004494FD /* DataStore.swift */; };
+		C8F324F2242571BA004494FD /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = C8F324F1242571BA004494FD /* Contentful */; };
+		C8F324F42425751A004494FD /* CourseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F324F32425751A004494FD /* CourseStore.swift */; };
+		C8F324F724257CBE004494FD /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C8F324F624257CBE004494FD /* SDWebImageSwiftUI */; };
+		C8F324F924258266004494FD /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F324F824258266004494FD /* BlurView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +98,12 @@
 		C8F3249F242426FA004494FD /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		C8F324A0242426FA004494FD /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		C8F324B724243412004494FD /* CourseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseList.swift; sourceTree = "<group>"; };
+		C8F324E824256013004494FD /* CourseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetail.swift; sourceTree = "<group>"; };
+		C8F324EA242567D9004494FD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		C8F324EC242569CC004494FD /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
+		C8F324EE24256D77004494FD /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		C8F324F32425751A004494FD /* CourseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseStore.swift; sourceTree = "<group>"; };
+		C8F324F824258266004494FD /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8F324F724257CBE004494FD /* SDWebImageSwiftUI in Frameworks */,
+				C8F324F2242571BA004494FD /* Contentful in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,11 +146,17 @@
 				C8F324542418886A004494FD /* Home.swift */,
 				C8F324582419D80A004494FD /* HomeView.swift */,
 				C8F324B724243412004494FD /* CourseList.swift */,
+				C8F324F32425751A004494FD /* CourseStore.swift */,
+				C8F324E824256013004494FD /* CourseDetail.swift */,
 				C8F32452241880B8004494FD /* MenuView.swift */,
 				C8F3245A241D6F8B004494FD /* UpdateList.swift */,
 				C8F3245C241D754A004494FD /* UpdateDetail.swift */,
 				C8F3245E241EA821004494FD /* UpdateStore.swift */,
+				C8F324EA242567D9004494FD /* Data.swift */,
+				C8F324EE24256D77004494FD /* DataStore.swift */,
+				C8F324EC242569CC004494FD /* PostList.swift */,
 				C8F32460241EB02B004494FD /* TabBar.swift */,
+				C8F324F824258266004494FD /* BlurView.swift */,
 				C8AE997C240C6E1F003584D6 /* Assets.xcassets */,
 				C8F32489242426FA004494FD /* Work_Sans */,
 				C8AE9981240C6E1F003584D6 /* LaunchScreen.storyboard */,
@@ -206,6 +228,10 @@
 			dependencies = (
 			);
 			name = "SwiftUI Practise";
+			packageProductDependencies = (
+				C8F324F1242571BA004494FD /* Contentful */,
+				C8F324F624257CBE004494FD /* SDWebImageSwiftUI */,
+			);
 			productName = "SwiftUI Practise";
 			productReference = C8AE9970240C6E1D003584D6 /* MORTYZ.app */;
 			productType = "com.apple.product-type.application";
@@ -234,6 +260,10 @@
 				Base,
 			);
 			mainGroup = C8AE9967240C6E1D003584D6;
+			packageReferences = (
+				C8F324F0242571BA004494FD /* XCRemoteSwiftPackageReference "contentful.swift" */,
+				C8F324F524257CBE004494FD /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = C8AE9971240C6E1D003584D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -286,9 +316,11 @@
 				C8F324632421C0B4004494FD /* RingView.swift in Sources */,
 				C8F32453241880B8004494FD /* MenuView.swift in Sources */,
 				C8F324592419D80A004494FD /* HomeView.swift in Sources */,
+				C8F324E924256013004494FD /* CourseDetail.swift in Sources */,
 				C8F3245D241D754A004494FD /* UpdateDetail.swift in Sources */,
 				C8F3245B241D6F8B004494FD /* UpdateList.swift in Sources */,
 				C8AE9979240C6E1D003584D6 /* SwiftUI_Practise.xcdatamodeld in Sources */,
+				C8F324EF24256D77004494FD /* DataStore.swift in Sources */,
 				C8F324B824243412004494FD /* CourseList.swift in Sources */,
 				C8AE9974240C6E1D003584D6 /* AppDelegate.swift in Sources */,
 				C8F3245F241EA821004494FD /* UpdateStore.swift in Sources */,
@@ -296,7 +328,11 @@
 				C8F32461241EB02B004494FD /* TabBar.swift in Sources */,
 				C8F324552418886A004494FD /* Home.swift in Sources */,
 				C8AE9976240C6E1D003584D6 /* SceneDelegate.swift in Sources */,
+				C8F324F42425751A004494FD /* CourseStore.swift in Sources */,
+				C8F324ED242569CC004494FD /* PostList.swift in Sources */,
+				C8F324F924258266004494FD /* BlurView.swift in Sources */,
 				C8F32488242421D2004494FD /* Modifiers.swift in Sources */,
+				C8F324EB242567D9004494FD /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +526,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C8F324F0242571BA004494FD /* XCRemoteSwiftPackageReference "contentful.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/contentful/contentful.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.8;
+			};
+		};
+		C8F324F524257CBE004494FD /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C8F324F1242571BA004494FD /* Contentful */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8F324F0242571BA004494FD /* XCRemoteSwiftPackageReference "contentful.swift" */;
+			productName = Contentful;
+		};
+		C8F324F624257CBE004494FD /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8F324F524257CBE004494FD /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C8AE9977240C6E1D003584D6 /* SwiftUI_Practise.xcdatamodeld */ = {

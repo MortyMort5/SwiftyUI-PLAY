@@ -12,7 +12,7 @@ struct UpdateList: View {
     @ObservedObject var store = UpdateStore()
     
     func addUpdate() {
-        store.updates.append(Update(image: "Card1", title: "New Item", text: "Text", date: "Jan 1"))
+        store.updates.append(Update(image: "skate2", title: "New Trick", text: "Let's invent our own tricks", date: "Jan 1"))
     }
     
     var body: some View {

@@ -7,9 +7,10 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CourseList: View {
-    @State var courses = courseData
+    @ObservedObject var store = CourseStore()
     @State var active = false
     @State var activeIndex = -1
     @State var activeView = CGSize.zero
@@ -19,6 +20,7 @@ struct CourseList: View {
             Color.black.opacity(Double(self.activeView.height / 500))
                 .animation(.linear)
                 .edgesIgnoringSafeArea(.all)
+                
             
             ScrollView {
                 VStack(spacing: 30) {
@@ -29,24 +31,24 @@ struct CourseList: View {
                         .padding(.top, 30)
                         .blur(radius: active ? 20 : 0)
                     
-                    ForEach(courses.indices, id: \.self) { index in
+                    ForEach(store.courses.indices, id: \.self) { index in
                         GeometryReader { geometry in
                             CourseView(
-                                show: self.$courses[index].show,
-                                course: self.courses[index],
+                                show: self.$store.courses[index].show,
+                                course: self.store.courses[index],
                                 active: self.$active,
                                 index: index,
                                 activeIndex: self.$activeIndex,
                                 activeView: self.$activeView
                             )
-                                .offset(y: self.courses[index].show ? -geometry.frame(in: .global).minY : 0)
+                                .offset(y: self.store.courses[index].show ? -geometry.frame(in: .global).minY : 0)
                                 .opacity(self.activeIndex != index && self.active ? 0 : 1)
                                 .scaleEffect(self.activeIndex != index && self.active ? 0.5 : 1)
                                 .offset(x: self.activeIndex != index && self.active ? screen.width : 0)
                         }
                         .frame(height: 280)
-                        .frame(maxWidth: self.courses[index].show ? .infinity : screen.width - 60)
-                        .zIndex(self.courses[index].show ? 1 : 0)
+                        .frame(maxWidth: self.store.courses[index].show ? .infinity : screen.width - 60)
+                        .zIndex(self.store.courses[index].show ? 1 : 0)
                     }
                 }
                 .frame(width: screen.width)
@@ -82,12 +84,12 @@ struct CourseView: View {
                 
                 Text("Skateboarding, as we know it, was probably born sometime in the late 1940s, or early 1950s, when surfers in California wanted something to do when the waves were flat. This was called sidewalk surfing – a new wave of surfing on the sidewalk as the sport of surfing became highly popular.")
                 
-                Text("Sidewalks and skate parks \nOld swimming pools drained.\nKickflips and split lips; \nyoung ankles sprained. \nAerials and Varials \nand being called a punk. \nTail taps and  grip tape; \nand tricks that take *****. \nExercise that is ramped up; \nbalance in a curve. \nBackflips and Bearings \nnow don't loose your nerve! \nOllies and wallplants \nit's no passing fad. \nacid drops and nosestalls \nNot just boys being bad! \nRamps under carports \nand falling and pain. \nDaring and doing tricks \nagain and again \nInclines; expression \nand Five Oh grinds \nNollies and ledges \nand friendship that Binds. \nGo away Mr. Policemen: Just let us be. \nSkateboarding is not a crime! \nSo let us Skate free!")
+                Text("Sidewalks and skate parks \nOld swimming pools drained.\nKickflips and split lips; \nyoung ankles sprained. \nAerials and Varials \nand being called a punk. \nTail taps and  grip tape; \nand tricks that take *****. \nExercise that is ramped up; \nbalance in a curve. \nBackflips and Bearings \nnow don't loose your nerve! \nOllies and wallplants \nit's no passing fad. \nacid drops and nosestalls \nNot just boys being bad! \nRamps under carports \nand falling and pain. \nDaring and doing tricks \n again and again \nInclines; expression \nand Five Oh grinds \nNollies and ledges \nand friendship that Binds. \nGo away Mr. Policemen: Just let us be. \nSkateboarding is not a crime! \nSo let us Skate free!")
             }
             .padding(30)
             .frame(maxWidth: show ? .infinity : screen.width - 60, maxHeight: show ? .infinity : 280, alignment: .top)
             .offset(y: show ? 460 : 9)
-            .background(Color.white)
+            .background(Color("background2"))
             .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
             .opacity(show ? 1 : 0)
@@ -118,7 +120,7 @@ struct CourseView: View {
                     }
                 }
                 Spacer()
-                Image(uiImage: course.image)
+                WebImage(url: course.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: .infinity)
@@ -157,6 +159,14 @@ struct CourseView: View {
                     self.activeIndex = -1
                 }
             }
+            
+            // This is to display that second view directly on top of this one so you can scroll up to see more content
+//            if show {
+//                CourseDetail(course: course, show: $show, active: $active, activeIndex: $activeIndex)
+//                    .background(Color.white)
+//                    .animation(nil)
+//            }
+            
         }
         .frame(height: show ? screen.height : 280)
         .scaleEffect(1 - self.activeView.height / 1000)
@@ -168,7 +178,7 @@ struct CourseView: View {
                 DragGesture().onChanged { value in
                     guard value.translation.height < 300 else { return }
                     guard value.translation.height > 0 else { return }
-                    self.activeView = value.translation
+//                    self.activeView = value.translation
                 }
                 .onEnded { value in
                     if self.activeView.height > 50 {
@@ -188,14 +198,14 @@ struct Course: Identifiable {
     var id = UUID()
     var title: String
     var subtitle: String
-    var image: UIImage
+    var image: URL
     var logo: UIImage
     var color: UIColor
     var show: Bool
 }
 
 var courseData = [
-    Course(title: "Vert Style Skate", subtitle: "18 Sections", image: #imageLiteral(resourceName: "skate4"), logo: #imageLiteral(resourceName: "icon"), color: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), show: false),
-    Course(title: "Park Style Skate", subtitle: "20 Sections", image: #imageLiteral(resourceName: "skate3"), logo: #imageLiteral(resourceName: "icon"), color: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), show: false),
-    Course(title: "The flow of Skating", subtitle: "20 Sections", image: #imageLiteral(resourceName: "skate"), logo: #imageLiteral(resourceName: "icon"), color: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1), show: false)
+    Course(title: "Vert Style Skate", subtitle: "18 Sections", image: URL(string: "https://dl.dropbox.com/s/2o3dbakln7wctrb/skate2.png?dl=0")!, logo: #imageLiteral(resourceName: "icon"), color: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), show: false),
+    Course(title: "Park Style Skate", subtitle: "20 Sections", image: URL(string: "https://dl.dropbox.com/s/a9ijs8n1d3i8n2l/skate5.png?dl=0")!, logo: #imageLiteral(resourceName: "icon"), color: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), show: false),
+    Course(title: "The flow of Skating", subtitle: "20 Sections", image: URL(string: "https://dl.dropbox.com/s/ijthrkv7i6tbp7y/skate.png?dl=0")!, logo: #imageLiteral(resourceName: "icon"), color: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1), show: false)
 ]
