@@ -128,8 +128,8 @@ struct CourseView: View {
             }
             .padding(show ? 30 : 20)
             .padding(.top, show ? 30 : 0)
-    //        .frame(width: show ? screen.width :  screen.width - 60, height: show ? screen.height : 280)
-            .frame(maxWidth: show ? .infinity : screen.width - 60, maxHeight: show ? 460 : 280 )
+            .frame(width: show ? screen.width :  screen.width - 60, height: show ? screen.height : 280)
+//            .frame(maxWidth: show ? .infinity : screen.width - 60, maxHeight: show ? 460 : 280 )
                 .background(Color(course.color))
             .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .shadow(color: Color(course.color).opacity(0.3), radius: 20, x: 0, y: 20)
